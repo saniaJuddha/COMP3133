@@ -1,0 +1,27 @@
+<mat-card class="example-card">
+    <mat-card-title-group>
+      <mat-card-title class="cardTitle">Mission: {{data.mission_name}}</mat-card-title>
+      <mat-card-title>Name: {{data.mission_name}}</mat-card-title>
+      <mat-card-title>Launch Year: {{data.launch_year}}</mat-card-title>
+      <mat-card-title>Launch Year: {{data.launch_year}}</mat-card-title>
+
+      <mat-card-title class="cardTitle">Rocket</mat-card-title>
+      <mat-card-title>Name: {{data.rocket.rocket_name}}</mat-card-title>
+      <mat-card-title>Type: {{data.rocket.rocket_type}}</mat-card-title>
+
+      <mat-card-title class="cardTitle">Launch Site</mat-card-title>
+      <mat-card-title>Name: {{data.launch_site.site_name}}</mat-card-title>
+
+      <mat-card-title class="cardTitle">Launch Details</mat-card-title>
+      <mat-card-title>{{data.details}}</mat-card-title>
+
+      <mat-card-title class="cardTitle">More Info on Launch Details</mat-card-title>
+      <mat-card-title>
+          <a href={{data.links.video_link}}><mat-icon aria-hidden="false" >videocam</mat-icon></a>
+        <a href={{data.links.wikipedia}}><mat-icon aria-hidden="false" >description</mat-icon></a>
+    </mat-card-title>
+      
+      <img mat-card-sm-image src={{data.links.mission_patch_small}} >
+
+    </mat-card-title-group>
+  </mat-card>

@@ -52,7 +52,7 @@ router.get("/restaurants", async (req, res) => {
 })
 
 router.get("/Delicatessen", async (req, res) => {
-    const post = await Post.find({ cuisine: "Delicatessen" }).where("city").ne("Brooklyn").select("cuisine name city -_id").sort({name:ASC});
+    const post = await Post.find({ cuisine: "Delicatessen" }).where("city").ne("Brooklyn").select("cuisine name city -_id").sort({name:'ASC'});
 
     try {
         if (post.length != 0) {
