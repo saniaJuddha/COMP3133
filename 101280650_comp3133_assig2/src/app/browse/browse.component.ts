@@ -1,22 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import gql from 'graphql-tag'
-import { Apollo } from 'apollo-angular';
-import {Listing} from '../models/listing'
-
-const allListing = gql`query{
-  getListing{
-      id
-listing_id
-listing_title
-description
-street
-city
-postal_code
-price
-email
-username
-  }
-}`;
+import {GraphqlapiService} from '../service/graphqlapi.service'
 
 @Component({
   selector: 'app-browse',
@@ -24,21 +7,35 @@ username
   styleUrls: ['./browse.component.css']
 })
 export class BrowseComponent implements OnInit {
-  allListing:Listing[] = [];
   
+  userType: any = null;
+ 
+  username: any = null;
 
+  allBookings: any;
 
-  constructor(private apollo : Apollo) { }
+  constructor( private db: GraphqlapiService) {
+    
+    this.userType = localStorage.getItem('type');
+    
+    if(this.userType === null){
+    
+      alert('Login Required to Access this Page! Please Log in');
+    
+      //this.router.navigate(['/']);
+    }
+    
+    this.username = localStorage.getItem('username');
+   
+  }
 
-  ngOnInit():void{
-    this.apollo.watchQuery<any>({
-      query:allListing
-    }).valueChanges.subscribe
-      (({data})=>{
-        console.log(data)
-        this.allListing = data.getListing;
-      }
-    )
+  ngOnInit(): void {
+
+    this.db.getBookingByCurrentUser().subscribe((bookings: any) => {
+    
+      this.allBookings = bookings.data.getBookingByCurrentUser;
+    
+    })
   }
 
 }

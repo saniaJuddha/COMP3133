@@ -1,16 +1,33 @@
 <br>
-<label for="site-search">Search by City or Postal Code:</label>
-<input type="text" [(ngModel)]="listingCity" id="site-search" name="q">
-<button type="submit" (click)="findListingByCity()">Search</button>
+<form [formGroup]="searchForm" (ngSubmit)="onSubmit()">
+    <p>
+        <mat-form-field appearance="standard">
+          <mat-label>Search By City</mat-label>
+          <input matInput placeholder="Placeholder" type="search" formControlName="value" id="site-search">
+          <mat-hint>Eg:"toronto"</mat-hint>
+        </mat-form-field>
+        <button mat-icon-button type="submit"><mat-icon>search</mat-icon></button>
+      </p>
+</form>
 <br>
 <br>
-<mat-card class="example-card" *ngFor="let listing of findByCity">
+
+<div *ngIf="listings === 0 && output">
+    <h1>No Results Found For: "{{value}}"</h1>
+    <img class="img"src="https://cdn.dribbble.com/users/1242216/screenshots/9326781/media/6384fef8088782664310666d3b7d4bf2.png?compress=1&resize=400x300">
+</div>
+<div *ngIf="listings !== 0 && output">
+    <h1>Showing Results For: {{value}}</h1>
+</div>
+
+<mat-card class="example-card" *ngFor="let listing of allListing">
     <mat-card-subtitle>{{listing.listing_id}}</mat-card-subtitle>
     <mat-card-title>{{listing.listing_title}}</mat-card-title>
     <p>{{listing.description}}</p>
     <br>
     <mat-card-content>
       <p>Street: {{listing.street}}<br>City: {{listing.city}}<br>Postal Code: {{listing.postal_code}}</p>
+      <p>By: {{listing.username}}</p>
     </mat-card-content>
     <mat-divider inset></mat-divider>
     <mat-card-actions>

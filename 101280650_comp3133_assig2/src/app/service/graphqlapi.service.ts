@@ -9,124 +9,7 @@ export class GraphqlapiService {
 
   constructor(private apollo: Apollo) { }
 
-  getListing() {
-    let query = this.apollo.query({
-      query: gql`{
-        getListing{
-          id
-          listing_id
-          listing_title
-          description
-          street
-          city
-          postal_code
-          price
-          email
-          username
-        }
-      }`
-    })
-    return query;
-  }
-
-  login(formValues: any) {
-    let mutation = this.apollo.mutate({
-      mutation: gql`
-        mutation login(
-          $username: String!,
-          $password: String!
-        ) {
-          login(
-            username: $username,
-            password: $password
-          ) 
-        }
-      `,
-      variables: formValues
-    })
-    return mutation;
-  }
-
-  getCurrentUser() {
-    let query = this.apollo.query({
-      query: gql`{
-        getCurrentUser{
-          type
-        }
-      }
-      `
-    })
-    return query;
-  }
-
-  getBookingByCurrentUser() {
-    let query = this.apollo.query({
-      query: gql`{
-        getBookingByCurrentUser{
-          listing_id,
-          booking_id,
-          booking_date,
-          booking_start,
-          booking_end,
-          username
-        }
-      }`
-    })
-    return query;
-  }
-
-  getListingsBySearch(formValues: any) {
-    let query = this.apollo.query({
-      query: gql`
-        query getListingsBySearch($search_string: String!){
-          getListingsBySearch(search_string: $search_string){
-            id
-            listing_id
-            listing_title
-            description
-            street
-            city
-            postal_code
-            price
-            email
-            username
-          }
-        }
-      `,
-      variables: { search_string: formValues }
-    })
-    return query;
-  }
-
-  addBooking(formValues: any) {
-    let mutation = this.apollo.mutate({
-      mutation: gql`
-      mutation addBooking(
-        $listing_id: String!,
-        $booking_id: String!,
-        $booking_start: String!,
-        $booking_end: String!
-        ) {
-            addBooking(
-              listing_id: $listing_id,
-              booking_id: $booking_id,
-              booking_start: $booking_start,
-              booking_end: $booking_end
-          ) 
-          {
-            listing_id
-            booking_id
-            booking_date
-            booking_start
-            booking_end
-            username
-          }
-        }`,
-      variables: formValues
-    })
-    return mutation;
-  }
-
+  //for register page
   addUser(formValues: any){
     let mutation = this.apollo.mutate({
       mutation: gql`
@@ -159,6 +42,152 @@ export class GraphqlapiService {
     return mutation;
   }
 
+  //for user login
+  login(formValues: any) {
+    let mutation = this.apollo.mutate({
+      mutation: gql`
+        mutation login(
+          $username: String!,
+          $password: String!
+        ) {
+          login(
+            username: $username,
+            password: $password
+          ) 
+        }
+      `,
+      variables: formValues
+    })
+    return mutation;
+  }
+
+  
+  getCurrentUser() {
+    let query = this.apollo.query({
+      query: gql`{
+        getCurrentUser{
+          type
+        }
+      }
+      `
+    })
+    return query;
+  }
+
+
+  // getListingByCurrentAdmin() {
+  //   let query = this.apollo.query({
+  //     query: gql`{
+  //       getListing{
+  //         id
+  //         listing_id
+  //         listing_title
+  //         description
+  //         street
+  //         city
+  //         postal_code
+  //         price
+  //         email
+  //         username
+  //       }
+  //     }`
+  //   })
+  //   return query;
+  // }
+
+  //for home page
+  getListing() {
+    let query = this.apollo.query({
+      query: gql`{
+        getListing{
+          id
+          listing_id
+          listing_title
+          description
+          street
+          city
+          postal_code
+          price
+          email
+          username
+        }
+      }`
+    })
+    return query;
+  }
+
+  //for search page
+  getListingBycity(formValues: any) {
+    let query = this.apollo.query({
+      query: gql`
+        query getListingBycity($city: String!){
+          getListingBycity(city: $city){
+            id
+            listing_id
+            listing_title
+            description
+            street
+            city
+            postal_code
+            price
+            email
+            username
+          }
+        }
+      `,
+      variables: { city: formValues }
+    })
+    return query;
+  }
+
+  //for add-booking page
+  addBooking(formValues: any) {
+    let mutation = this.apollo.mutate({
+      mutation: gql`
+      mutation addBooking(
+        $listing_id: String!,
+        $booking_id: String!,
+        $booking_start: String!,
+        $booking_end: String!
+        ) {
+            addBooking(
+              listing_id: $listing_id,
+              booking_id: $booking_id,
+              booking_start: $booking_start,
+              booking_end: $booking_end
+          ) 
+          {
+            listing_id
+            booking_id
+            booking_date
+            booking_start
+            booking_end
+            username
+          }
+        }`,
+      variables: formValues
+    })
+    return mutation;
+  }
+
+  //for browse page
+  getBookingByCurrentUser() {
+    let query = this.apollo.query({
+      query: gql`{
+        getBookingByCurrentUser{
+          listing_id,
+          booking_id,
+          booking_date,
+          booking_start,
+          booking_end,
+          username
+        }
+      }`
+    })
+    return query;
+  }
+
+  //for add-listing page
   addListing(formValues: any){
     let mutation = this.apollo.mutate({
       mutation: gql`

@@ -1,0 +1,30 @@
+<h1>Book Listing : </h1>
+<mat-card class="example-card">
+    <form class="example-form" [formGroup]="bookingForm" (ngSubmit)="onSubmit()">
+        <table class="example-full-width" cellspacing="0">
+            <tr>
+                <td>
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Booking Id</mat-label>
+                        <input matInput formControlName="booking_id">
+                    </mat-form-field>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Booking Start Date</mat-label>
+                        <input matInput formControlName="booking_start" type="date">
+                    </mat-form-field>
+                </td>
+                <td>
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Booking End Date</mat-label>
+                        <input matInput formControlName="booking_end" type="date">
+                    </mat-form-field>
+                </td>
+            </tr>
+        </table>
+            <div>
+                <button type="submit">Book!</button>
+            </div>

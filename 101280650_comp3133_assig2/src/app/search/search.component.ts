@@ -1,23 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import gql from 'graphql-tag'
-import { Apollo } from 'apollo-angular';
-import {Listing} from '../models/listing'
-
-const GET_LISTING_BY_CITY =gql`query($city:String!){
-  getListingBycity(city:$city){
-      id
-listing_id
-listing_title
-description
-street
-city
-postal_code
-price
-email
-username
-  }
-}`
-
+import { GraphqlapiService } from '../service/graphqlapi.service';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-search',
@@ -25,23 +8,53 @@ username
   styleUrls: ['./search.component.css']
 })
 export class SearchComponent implements OnInit {
-  findByCity:Listing[] = [];
-  listingCity:string = '';
 
-  constructor(private apollo : Apollo) { }
+  output: boolean = false;
+  
+  loggedIn: boolean = false;
+  
+  value: any = null;
+  
+  listings: number = 0;
+  
+  searchForm: any;
 
-  ngOnInit():void{}
+  searchCity: any;
 
-  findListingByCity(){
-    this.apollo.watchQuery<any>({
-      query:GET_LISTING_BY_CITY,
-    variables:{
-      city: this.listingCity
+  allListing: any;
+
+  constructor( private db: GraphqlapiService) {
+    
+  this.searchForm = new FormGroup({
+
+    value: new FormControl("", Validators.required),
+ 
+  })
+   }
+
+  ngOnInit(): void {
+
+    if(localStorage.getItem('username') !== null){
+    
+      this.loggedIn = true;
+    
     }
-    }).valueChanges.subscribe(({data})=>{
-      console.log(data)
-         this.findByCity = data.getListingByCity;
-    })
+  }
+
+  onSubmit() {
+    if(this.searchForm.valid) {
+      this.db.getListingBycity(this.searchForm.value.value).subscribe((res: any) => {
+       
+        this.allListing = res.data.getListingBycity;
+
+        this.listings = res.data.getListingBycity.length;
+
+        this.output = true;
+
+        this.value = this.searchForm.value.value
+        
+      });
+    }
   }
 
 }

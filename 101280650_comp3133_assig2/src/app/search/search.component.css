@@ -1,0 +1,18 @@
+.example-card{
+    background-color: antiquewhite;
+}
+.city-card{
+    background-color: rgb(250, 239, 215);
+}
+.search-card{
+    background-color: rgb(250, 248, 215);
+}
+hr.rounded{
+    border-top: 8px solid #bbb;
+    border-radius: 5px;
+    
+}
+.img{
+    height: 500px;
+    width: 650px;
+}

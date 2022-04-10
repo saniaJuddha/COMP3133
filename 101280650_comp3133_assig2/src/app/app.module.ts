@@ -13,10 +13,14 @@ import { MatTabsModule} from '@angular/material/tabs';
 import {MatCardModule} from '@angular/material/card'
 import {MatDividerModule} from '@angular/material/divider'
 import {MatButtonModule} from '@angular/material/button';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SearchComponent } from './search/search.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import {MatInputModule} from '@angular/material/input'
+import {MatIconModule} from '@angular/material/icon';
+import { AddListingComponent } from './add-listing/add-listing.component';
+import { AddBookingComponent } from './add-booking/add-booking.component'
 
 
 @NgModule({
@@ -28,6 +32,8 @@ import { RegisterComponent } from './register/register.component';
     SearchComponent,
     LoginComponent,
     RegisterComponent,
+    AddListingComponent,
+    AddBookingComponent,
   ],
   imports: [
     BrowserModule,
@@ -39,7 +45,10 @@ import { RegisterComponent } from './register/register.component';
     MatCardModule,
     MatDividerModule,
     MatButtonModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule,
+    MatInputModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]
