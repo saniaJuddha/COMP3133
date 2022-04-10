@@ -21,6 +21,9 @@ import {MatInputModule} from '@angular/material/input'
 import {MatIconModule} from '@angular/material/icon';
 import { AddListingComponent } from './add-listing/add-listing.component';
 import { AddBookingComponent } from './add-booking/add-booking.component'
+import {MatStepperModule} from '@angular/material/stepper'
+import {MatToolbarModule} from '@angular/material/toolbar'
+import {MatMenuModule} from '@angular/material/menu'
 
 
 @NgModule({
@@ -48,7 +51,10 @@ import { AddBookingComponent } from './add-booking/add-booking.component'
     FormsModule,
     ReactiveFormsModule,
     MatInputModule,
-    MatIconModule
+    MatIconModule,
+    MatStepperModule,
+    MatToolbarModule,
+    MatMenuModule
   ],
   providers: [],
   bootstrap: [AppComponent]

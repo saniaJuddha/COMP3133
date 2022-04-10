@@ -1,5 +1,7 @@
-<h1>Add Listing : </h1>
+
+<div class="main-div">
 <mat-card class="example-card">
+    <h1>Add Listing : </h1>
     <form class="example-form" [formGroup]="listingForm" (ngSubmit)="onSubmit()">
         <table class="example-full-width" cellspacing="0">
             <tr>
@@ -23,12 +25,24 @@
                         <input matInput formControlName="description">
                     </mat-form-field>
                 </td>
+                <td>
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Price</mat-label>
+                        <input matInput formControlName="price">
+                    </mat-form-field>
+                </td>
             </tr>
             <tr>
                 <td>
                     <mat-form-field class="example-full-width" appearance="fill">
                         <mat-label>Street</mat-label>
                         <input matInput formControlName="street">
+                    </mat-form-field>
+                </td>
+                <td >
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Email</mat-label>
+                        <input matInput formControlName="email">
                     </mat-form-field>
                 </td>
             </tr>
@@ -47,22 +61,10 @@
                 </td>
             </tr>
             <tr>
-                <td rowspan="2">
-                    <mat-form-field class="example-full-width" appearance="fill">
-                        <mat-label>Email</mat-label>
-                        <input matInput formControlName="email">
-                    </mat-form-field>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <mat-form-field class="example-full-width" appearance="fill">
-                        <mat-label>Price</mat-label>
-                        <input matInput formControlName="price">
-                    </mat-form-field>
-                </td>
+                
             </tr>
         </table>
             <div>
-                <button type="submit">Upload Listing!</button>
+                <button mat-raised-button color="basic" type="submit">Upload Listing!</button>
             </div>
+            

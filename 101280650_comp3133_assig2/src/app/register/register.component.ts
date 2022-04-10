@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {GraphqlapiService} from '.././service/graphqlapi.service'
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
@@ -9,7 +9,6 @@ import { Router } from '@angular/router';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-  
   hide: boolean = true;
   username: any;
 

@@ -18,14 +18,14 @@ export class BrowseComponent implements OnInit {
     
     this.userType = localStorage.getItem('type');
     
-    if(this.userType === null){
+    // if(this.userType === null){
     
-      alert('Login Required to Access this Page! Please Log in');
+    //   alert('Login Required to Access this Page! Please Log in');
     
-      //this.router.navigate(['/']);
-    }
+    //   //this.router.navigate(['/']);
+    // }
     
-    this.username = localStorage.getItem('username');
+    // this.username = localStorage.getItem('username');
    
   }
 

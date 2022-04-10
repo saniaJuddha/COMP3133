@@ -1,4 +1,6 @@
+<div class="main-div">
 <mat-card class="example-card">
+    <h1>Login :</h1>
     <form class="example-form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
         <table class="example-full-width" cellspacing="0">
             <tr>
@@ -21,7 +23,8 @@
     </mat-form-field>
         </p>
         <div>
-        <button type="submit">Login</button>
+        <button mat-raised-button color="basic" type="submit">Login</button>
     </div>
     </form>
     </mat-card>
+    </div>

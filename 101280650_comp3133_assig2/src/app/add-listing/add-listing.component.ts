@@ -59,15 +59,15 @@ export class AddListingComponent implements OnInit {
     
       console.log(this.listingForm.value)
     
-      this.db.addListing(this.listingForm.value).subscribe((res: any) => {
+    //   this.db.addListing(this.listingForm.value).subscribe((res: any) => {
         
-        console.log('listing added')
+    //     console.log('listing added')
 
-        alert(`Listing ${res.data.addListing.listing_title} Uploaded`);
+    //     alert(`Listing ${res.data.addListing.listing_title} Uploaded`);
     
-        //this.router.navigate(['/']);
+    //     //this.router.navigate(['/']);
     
-      });
+    //   });
     }
   }
 

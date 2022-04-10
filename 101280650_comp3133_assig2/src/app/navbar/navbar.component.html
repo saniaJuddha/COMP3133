@@ -1,9 +1,31 @@
-<mat-tab-group mat-align-tabs="center">
-    <mat-tab label="Home"> <app-home></app-home></mat-tab>
-    <mat-tab label="Your Bookings"> <app-browse></app-browse></mat-tab>
-    <mat-tab label="Search"><app-search></app-search> </mat-tab>
-    <mat-tab label="Login"><app-login></app-login> </mat-tab>
-    <mat-tab label="Register"><app-register></app-register> </mat-tab>
-    <mat-tab label="Booking"><app-add-booking></app-add-booking> </mat-tab>
-    <mat-tab label="Listing"><app-add-listing></app-add-listing> </mat-tab>
-  </mat-tab-group>
+<mat-toolbar color="primary">
+    <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with menu icon">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+        <button mat-menu-item>
+            <span>Home</span>
+          </button>
+        <button mat-menu-item>
+          <span>Login</span>
+        </button>
+        <button mat-menu-item>
+          <span>Register</span>
+        </button>
+        <button mat-menu-item>
+          <span>Search Listing</span>
+        </button>
+        <button mat-menu-item>
+            <span>Your Bookings</span>
+          </button>
+          <button mat-menu-item>
+            <span>Book Listing</span>
+          </button>
+          <button mat-menu-item>
+            <span>Add Listing</span>
+          </button>
+      </mat-menu>
+    <span>101280650 Comp 3133 Assignment 2 &nbsp;</span>
+    <span class="example-spacer"></span>   
+      <mat-icon>favorite</mat-icon>
+  </mat-toolbar>

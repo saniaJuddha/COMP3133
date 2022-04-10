@@ -1,17 +1,19 @@
-<mat-card class="example-card">
+<div class="main-div">
+<mat-card class="example-card" ali>
+    <h1>Register : </h1>
 <form class="example-form" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
     <table class="example-full-width" cellspacing="0">
         <tr>
             <td>
                 <mat-form-field class="example-full-width" appearance="fill">
                     <mat-label>First name</mat-label>
-                    <input matInput formControlName="firstname">
+                    <input matInput placeholder="enter your first name" formControlName="firstname">
                 </mat-form-field>
             </td>
             <td>
                 <mat-form-field class="example-full-width" appearance="fill">
                     <mat-label>Last name</mat-label>
-                    <input matInput formControlName="lastname">
+                    <input matInput placeholder="enter your last name" formControlName="lastname">
                 </mat-form-field>
             </td>
         </tr>
@@ -19,13 +21,13 @@
             <td>
                 <mat-form-field class="example-full-width" appearance="fill">
                     <mat-label>Username</mat-label>
-                    <input matInput formControlName="username">
+                    <input matInput placeholder="10 letters minimum" formControlName="username">
                 </mat-form-field>
             </td>
             <td>
                 <mat-form-field class="example-full-width" appearance="fill">
                     <mat-label>User Type</mat-label>
-                    <textarea matInput placeholder="admin or user" formControlName="type"></textarea>
+                    <input matInput placeholder="admin or user" formControlName="type">
                 </mat-form-field>
             </td>
         </tr>
@@ -34,7 +36,7 @@
     <p>
         <mat-form-field class="example-full-width" appearance="fill">
             <mat-label>Email</mat-label>
-            <textarea matInput placeholder="example@gmail.com" formControlName="email"></textarea>
+            <input matInput placeholder="example@gmail.com" formControlName="email">
 
         </mat-form-field>
             <mat-form-field appearance="fill">
@@ -46,7 +48,8 @@
 </mat-form-field>
     </p>
     <div>
-    <button type="submit">Register</button>
+        <button mat-raised-button color="basic" type="submit">Register!</button>
 </div>
 </form>
 </mat-card>
+</div>
