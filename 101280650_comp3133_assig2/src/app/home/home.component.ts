@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { GraphqlapiService } from '../service/graphqlapi.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -11,7 +12,7 @@ export class HomeComponent implements OnInit {
 
   loginStatus: boolean = false;
 
-  constructor( private db: GraphqlapiService) { }
+  constructor( private db: GraphqlapiService, private router : Router) { }
 
   ngOnInit(): void {
 
@@ -33,7 +34,7 @@ export class HomeComponent implements OnInit {
       })
 
       this.loginStatus = true;
-      
+
     }
   }
 }

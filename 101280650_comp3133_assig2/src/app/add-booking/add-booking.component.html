@@ -1,7 +1,7 @@
-
+<app-navbar></app-navbar>
 <div class="main-div">
 <mat-card class="example-card">
-    <h1>Book Listing : </h1>
+    <h1>Book Listing : {{listingId}} </h1>
     <form class="example-form" [formGroup]="bookingForm" (ngSubmit)="onSubmit()">
         <table class="example-full-width" cellspacing="0">
             <tr>

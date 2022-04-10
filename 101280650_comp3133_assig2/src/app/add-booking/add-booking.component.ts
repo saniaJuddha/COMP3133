@@ -19,17 +19,12 @@ export class AddBookingComponent implements OnInit {
   
   userType: any = null;
 
-  constructor( private db: GraphqlapiService) { 
-    //this.listingId = this.route.snapshot.params['id'];
+  constructor( private db: GraphqlapiService, private router1: ActivatedRoute, private router:Router) { 
+    this.listingId = this.router1.snapshot.params['id'];
    
     this.username = localStorage.getItem('username');
    
     this.userType = localStorage.getItem('type');
-
-    // if(this.type === null){
-    //   alert('Login Required!');
-    //   this.router.navigate(['/']);
-    // }
 
     this.bookingForm = new FormGroup({
       
@@ -41,6 +36,15 @@ export class AddBookingComponent implements OnInit {
       
       listing_id: new FormControl(this.listingId)
     })
+
+    
+    if(this.userType === null){
+
+      alert('Login Required!');
+      
+      this.router.navigate(['/']);
+    }
+
   }
 
   ngOnInit(): void {
@@ -53,8 +57,9 @@ export class AddBookingComponent implements OnInit {
       this.db.addBooking(this.bookingForm.value).subscribe((res: any) => {
     
         alert(`Booking ${res.data.addBooking.booking_id} Successful`);
-    
-        //this.router.navigate(['/bookings']);
+        console.log('booking created')
+
+        this.router.navigate(['/browse']);
     
       });
     }

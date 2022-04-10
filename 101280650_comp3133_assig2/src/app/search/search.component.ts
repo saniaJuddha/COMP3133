@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { GraphqlapiService } from '../service/graphqlapi.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-search',
@@ -23,7 +24,7 @@ export class SearchComponent implements OnInit {
 
   allListing: any;
 
-  constructor( private db: GraphqlapiService) {
+  constructor( private db: GraphqlapiService, private router: Router) {
     
   this.searchForm = new FormGroup({
 
@@ -52,7 +53,7 @@ export class SearchComponent implements OnInit {
         this.output = true;
 
         this.value = this.searchForm.value.value
-        
+
       });
     }
   }

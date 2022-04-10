@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit {
 
   hide = true;
 
-  constructor( private db: GraphqlapiService) { }
+  constructor( private db: GraphqlapiService, private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
 
           alert("Username Password Incorrect");
           
-          // this.router.navigate(['/login']);
+          this.router.navigate(['/login']);
         } 
         else {
           localStorage.setItem('token', res.data?.login)
@@ -45,10 +45,8 @@ export class LoginComponent implements OnInit {
 
           console.log('login successful')
           
-          // this.router.navigate(['/'])  
-          // .then(() => {
-          //   window.location.reload();
-          //});
+          this.router.navigate(['/']).then(() => {window.location.reload();
+          });
         } 
       });
     }

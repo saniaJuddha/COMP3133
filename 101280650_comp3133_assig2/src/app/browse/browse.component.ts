@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {GraphqlapiService} from '../service/graphqlapi.service'
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-browse',
@@ -12,30 +13,31 @@ export class BrowseComponent implements OnInit {
  
   username: any = null;
 
-  allBookings: any;
+  allBookings: any=[];
 
-  constructor( private db: GraphqlapiService) {
+  constructor( private db: GraphqlapiService, private router:Router) {
     
     this.userType = localStorage.getItem('type');
     
-    // if(this.userType === null){
+    if(this.userType === null){
     
-    //   alert('Login Required to Access this Page! Please Log in');
+      alert('Login Required to Access this Page! Please Log in');
     
-    //   //this.router.navigate(['/']);
-    // }
+      this.router.navigate(['/']);
+    }
     
-    // this.username = localStorage.getItem('username');
+    this.username = localStorage.getItem('username');
    
   }
 
   ngOnInit(): void {
 
-    this.db.getBookingByCurrentUser().subscribe((bookings: any) => {
+    this.db.getBookingByCurrentUser().subscribe((allBookings: any) => {
     
-      this.allBookings = bookings.data.getBookingByCurrentUser;
+      this.allBookings = allBookings.data.getBookingByCurrentUser;
     
-    })
+      console.log(allBookings)
+    });
   }
 
 }

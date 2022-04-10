@@ -3,26 +3,29 @@
       <mat-icon>menu</mat-icon>
     </button>
     <mat-menu #menu="matMenu">
-        <button mat-menu-item>
+        <button mat-menu-item routerLink="/">
             <span>Home</span>
-          </button>
-        <button mat-menu-item>
+        </button>
+        <button *ngIf="!loginStatus"  mat-menu-item routerLink="/login">
           <span>Login</span>
         </button>
-        <button mat-menu-item>
+        <button *ngIf="!loginStatus" mat-menu-item routerLink="/register">
           <span>Register</span>
         </button>
-        <button mat-menu-item>
+        <button mat-menu-item routerLink="/search">
           <span>Search Listing</span>
         </button>
-        <button mat-menu-item>
+        <button *ngIf="loginStatus" mat-menu-item routerLink="/browse">
             <span>Your Bookings</span>
-          </button>
-          <button mat-menu-item>
+        </button>
+          <button mat-menu-item routerLink="/">
             <span>Book Listing</span>
           </button>
-          <button mat-menu-item>
+          <button *ngIf="admin" mat-menu-item routerLink="/addlisting">
             <span>Add Listing</span>
+          </button>
+          <button *ngIf="loginStatus"  mat-menu-item routerLink="/logout">
+            <span>Logout</span>
           </button>
       </mat-menu>
     <span>101280650 Comp 3133 Assignment 2 &nbsp;</span>

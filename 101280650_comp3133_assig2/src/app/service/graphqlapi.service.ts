@@ -175,6 +175,7 @@ export class GraphqlapiService {
     let query = this.apollo.query({
       query: gql`{
         getBookingByCurrentUser{
+          id,
           listing_id,
           booking_id,
           booking_date,

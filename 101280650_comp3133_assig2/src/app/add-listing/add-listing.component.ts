@@ -10,22 +10,17 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class AddListingComponent implements OnInit {
   
-  userType: any = null;
+  userType: any;
   
   listingForm: any;
   
-  username: any = null;
+  username: any;
 
-  constructor( private db: GraphqlapiService) { 
+  constructor( private db: GraphqlapiService, private router: Router) { 
 
     this.userType = localStorage.getItem('type');
     
     this.username = localStorage.getItem('username');
-
-    // if(this.type === 'customer'){
-    //   alert('Admin Access Required!');
-    //   this.router.navigate(['/']);
-    // }
 
     this.listingForm = new FormGroup({
 
@@ -48,6 +43,14 @@ export class AddListingComponent implements OnInit {
       username: new FormControl(this.username)
     
     })
+    
+    if(this.userType === 'customer'){
+
+      alert('Admin Access Required!');
+      
+      this.router.navigate(['/']);
+    }
+
   }
 
   ngOnInit(): void {
@@ -59,15 +62,15 @@ export class AddListingComponent implements OnInit {
     
       console.log(this.listingForm.value)
     
-    //   this.db.addListing(this.listingForm.value).subscribe((res: any) => {
+      this.db.addListing(this.listingForm.value).subscribe((res: any) => {
         
-    //     console.log('listing added')
+        console.log('listing added')
 
-    //     alert(`Listing ${res.data.addListing.listing_title} Uploaded`);
+        alert(`Listing ${res.data.addListing.listing_title} Uploaded`);
     
-    //     //this.router.navigate(['/']);
+        this.router.navigate(['/']);
     
-    //   });
+      });
     }
   }
 

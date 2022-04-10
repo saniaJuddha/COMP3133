@@ -6,10 +6,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
+  
+  admin: any;
 
-  constructor() { }
+  loginStatus: any;
+
+  constructor() { 
+
+    this.loginStatus = localStorage.getItem('token') ? true : false;
+
+    this.admin = localStorage.getItem('type')=== 'admin';
+  }
 
   ngOnInit(): void {
   }
-
 }

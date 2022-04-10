@@ -1,3 +1,4 @@
+<app-navbar></app-navbar>
 <mat-card class="example-card" *ngFor="let listing of allListing">
     <mat-card-subtitle>{{listing.listing_id}}</mat-card-subtitle>
     <mat-card-title>{{listing.listing_title}}</mat-card-title>
@@ -11,7 +12,8 @@
       <button mat-button>Price: ${{listing.price}}</button>
     </mat-card-actions>
     <mat-card-footer>
-      
+        <button *ngIf="loginStatus" mat-raised-button color="basic" routerLink="/addbooking/{{listing.listing_id}}">Book Listing</button>
+        <button *ngIf="!loginStatus" mat-raised-button color="basic" routerLink="/login">Book Listing</button>
     </mat-card-footer>
     <hr class="rounded">
 </mat-card>

@@ -9,7 +9,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
+
   hide: boolean = true;
+  
   username: any;
 
   registerForm = new FormGroup({
@@ -46,14 +48,15 @@ export class RegisterComponent implements OnInit {
       this.db.addUser(this.registerForm.value).subscribe((res: any) => {
     
         alert(`User ${res.data.addUser.username} Created Successfully`);
+       
         console.log(this.registerForm.value)
     
-        // this.router.navigate(['/login']);
+        this.router.navigate(['/login'])
       });
     }
   }
 
-  constructor(private db: GraphqlapiService) { 
+  constructor(private db: GraphqlapiService, private router: Router) { 
 
     this.username = localStorage.getItem('username');
   
